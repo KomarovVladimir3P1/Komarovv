@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище BaseDModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employer">
+          <Key>
+            <PropertyRef Name="EmployerID" />
+          </Key>
+          <Property Name="EmployerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderBoardID" Type="int" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmployerMail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmployerPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OrderBoard">
+          <Key>
+            <PropertyRef Name="OrderBoardID" />
+          </Key>
+          <Property Name="OrderBoardID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployerID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="OrderTitle" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="UserMail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserSkills" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_OrderBoard_Employer">
+          <End Role="Employer" Type="Self.Employer" Multiplicity="1" />
+          <End Role="OrderBoard" Type="Self.OrderBoard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employer">
+              <PropertyRef Name="EmployerID" />
+            </Principal>
+            <Dependent Role="OrderBoard">
+              <PropertyRef Name="EmployerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderBoard_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="OrderBoard" Type="Self.OrderBoard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="OrderBoard">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderBoard_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="OrderBoard" Type="Self.OrderBoard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="OrderBoard">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище BaseDModelContainer">
+          <EntitySet Name="Employer" EntityType="Self.Employer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderBoard" EntityType="Self.OrderBoard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_OrderBoard_Employer" Association="Self.FK_OrderBoard_Employer">
+            <End Role="Employer" EntitySet="Employer" />
+            <End Role="OrderBoard" EntitySet="OrderBoard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderBoard_Role" Association="Self.FK_OrderBoard_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="OrderBoard" EntitySet="OrderBoard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderBoard_User" Association="Self.FK_OrderBoard_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="OrderBoard" EntitySet="OrderBoard" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BaseDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employer">
+          <Key>
+            <PropertyRef Name="EmployerID" />
+          </Key>
+          <Property Name="EmployerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderBoardID" Type="Int32" Nullable="false" />
+          <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployerMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployerPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrderBoards" Relationship="Self.FK_OrderBoard_Employer" FromRole="Employer" ToRole="OrderBoard" />
+        </EntityType>
+        <EntityType Name="OrderBoard">
+          <Key>
+            <PropertyRef Name="OrderBoardID" />
+          </Key>
+          <Property Name="OrderBoardID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employer" Relationship="Self.FK_OrderBoard_Employer" FromRole="OrderBoard" ToRole="Employer" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_OrderBoard_Role" FromRole="OrderBoard" ToRole="Role" />
+          <NavigationProperty Name="User" Relationship="Self.FK_OrderBoard_User" FromRole="OrderBoard" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="OrderBoards" Relationship="Self.FK_OrderBoard_Role" FromRole="Role" ToRole="OrderBoard" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="UserMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserSkills" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="OrderBoards" Relationship="Self.FK_OrderBoard_User" FromRole="User" ToRole="OrderBoard" />
+        </EntityType>
+        <Association Name="FK_OrderBoard_Employer">
+          <End Role="Employer" Type="Self.Employer" Multiplicity="1" />
+          <End Role="OrderBoard" Type="Self.OrderBoard" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_OrderBoard_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="OrderBoard" Type="Self.OrderBoard" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_OrderBoard_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="OrderBoard" Type="Self.OrderBoard" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="BaseDEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employers" EntityType="Self.Employer" />
+          <EntitySet Name="OrderBoards" EntityType="Self.OrderBoard" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_OrderBoard_Employer" Association="Self.FK_OrderBoard_Employer">
+            <End Role="Employer" EntitySet="Employers" />
+            <End Role="OrderBoard" EntitySet="OrderBoards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderBoard_Role" Association="Self.FK_OrderBoard_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="OrderBoard" EntitySet="OrderBoards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderBoard_User" Association="Self.FK_OrderBoard_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="OrderBoard" EntitySet="OrderBoards" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище BaseDModelContainer" CdmEntityContainer="BaseDEntities1">
+          <EntitySetMapping Name="Employers">
+            <EntityTypeMapping TypeName="BaseDModel.Employer">
+              <MappingFragment StoreEntitySet="Employer">
+                <ScalarProperty Name="EmployerID" ColumnName="EmployerID" />
+                <ScalarProperty Name="OrderBoardID" ColumnName="OrderBoardID" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="EmployerMail" ColumnName="EmployerMail" />
+                <ScalarProperty Name="EmployerPhone" ColumnName="EmployerPhone" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderBoards">
+            <EntityTypeMapping TypeName="BaseDModel.OrderBoard">
+              <MappingFragment StoreEntitySet="OrderBoard">
+                <ScalarProperty Name="OrderBoardID" ColumnName="OrderBoardID" />
+                <ScalarProperty Name="OrderTitle" ColumnName="OrderTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="BaseDModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Role1" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BaseDModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="UserMail" ColumnName="UserMail" />
+                <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="UserSkills" ColumnName="UserSkills" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_OrderBoard_Employer" TypeName="BaseDModel.FK_OrderBoard_Employer" StoreEntitySet="OrderBoard">
+            <EndProperty Name="Employer">
+              <ScalarProperty Name="EmployerID" ColumnName="EmployerID" />
+            </EndProperty>
+            <EndProperty Name="OrderBoard">
+              <ScalarProperty Name="OrderBoardID" ColumnName="OrderBoardID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_OrderBoard_Role" TypeName="BaseDModel.FK_OrderBoard_Role" StoreEntitySet="OrderBoard">
+            <EndProperty Name="Role">
+              <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+            </EndProperty>
+            <EndProperty Name="OrderBoard">
+              <ScalarProperty Name="OrderBoardID" ColumnName="OrderBoardID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_OrderBoard_User" TypeName="BaseDModel.FK_OrderBoard_User" StoreEntitySet="OrderBoard">
+            <EndProperty Name="User">
+              <ScalarProperty Name="UserID" ColumnName="UserID" />
+            </EndProperty>
+            <EndProperty Name="OrderBoard">
+              <ScalarProperty Name="OrderBoardID" ColumnName="OrderBoardID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
