@@ -1,0 +1,57 @@
+﻿<Page x:Class="Komarovv.View.Pages.Contacts"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Komarovv.View.Pages"
+      mc:Ignorable="d" 
+      Height="550" Width="1000"
+      Title="Contacts">
+
+    <Grid>
+        <Border Height="550"
+                Width="1000"
+                HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Background="#36393E">
+            <StackPanel>
+                <TextBlock 
+                    Margin="0 40"
+                    TextAlignment="Center"
+                    FontSize="50"
+                    Text="Контакты"
+                    Foreground="White"
+                    FontWeight="SemiBold"/>
+                <TextBlock 
+                    Margin="20 20 0 0"
+                    TextAlignment="Left"
+                    Foreground="LightGray"
+                    FontWeight="SemiBold"
+                    FontSize="30"
+                    Text="Адрес    -    г.Москва ул.Пушкина д.13"/>
+                <TextBlock
+                    Margin="20 20 0 0"
+                    TextAlignment="Left"
+                    Foreground="LightGray"
+                    FontWeight="SemiBold"
+                    FontSize="30"
+                    Text="Телефон  -  8 (800) 100 - 41 - 21 "/>
+                <TextBlock
+                    Margin="20 20 0 0"
+                    TextAlignment="Left"
+                    Foreground="LightGray"
+                    FontWeight="SemiBold"
+                    FontSize="30"
+                    Text="Сайт      -    https://uma-avto.ru "/>
+                <TextBlock
+                    Margin="20 20 0 0"
+                    TextAlignment="Left"
+                    Foreground="LightGray"
+                    FontWeight="SemiBold"
+                    FontSize="30"
+                    Text="Почта    -    UmaAvto@mail.ru "/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

@@ -1,11 +1,11 @@
 ﻿using Komarovv.Core;
 using Komarovv.Model;
 using Komarovv.View.Pages.AdministratorPage;
-using Komarovv.View.Pages.EmployerPage;
 using Komarovv.View.Pages.UserPage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -34,7 +34,8 @@ namespace Komarovv.View.Pages.LoginPage
         {
             try
             {
-                User userModel = FrameNavigate.DB.Users.FirstOrDefault(u => u.UserMail == TbLogin.Text && u.UserPhone == PsbPassword.Password);
+                User userModel = FrameNavigate.DB.Users.FirstOrDefault(u => u.UserPhone == 
+                                           TbLogin.Text && u.UserPassword == PsbPassword.Password);
                 if (userModel == null)
                 {
                     MessageBox.Show("Ошибка данных",
@@ -44,6 +45,7 @@ namespace Komarovv.View.Pages.LoginPage
                 }
                 else
                 {
+                    Core.Authorization.AuthorizedUser = userModel;
                     switch (userModel.RoleID)
                     {
                         case 1:
@@ -65,14 +67,10 @@ namespace Komarovv.View.Pages.LoginPage
             }
         }
 
-        private void BtnWork_Click(object sender, RoutedEventArgs e)
+        private void BtnRegistration_Click(object sender, RoutedEventArgs e)
         {
             FrameNavigate.FrameObject.Navigate(new MainWindowRegistrationPage());
         }
 
-        private void BtnRegistration_Click(object sender, RoutedEventArgs e)
-        {
-            FrameNavigate.FrameObject.Navigate(new MainEmployerPage());
-        }
     }
 }

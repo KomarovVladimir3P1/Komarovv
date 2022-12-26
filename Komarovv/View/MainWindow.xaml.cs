@@ -1,6 +1,7 @@
 ﻿using Komarovv.Core;
 using Komarovv.View.Pages.LoginPage;
 using Komarovv.Model;
+using Komarovv.View.Pages.UserPage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Komarovv.View.Pages;
 
 namespace Komarovv
 {
@@ -27,8 +29,7 @@ namespace Komarovv
         {
             InitializeComponent();
             FrameNavigate.FrameObject = MainWindowFrame;
-            FrameNavigate.DB = new BaseDEntities1();
-            MainWindowFrame.Navigate(new MainWindowLoginPage());
+            FrameNavigate.DB = new DaEntities7();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -36,9 +37,14 @@ namespace Komarovv
             DragMove();
         }
 
-        private void btnClose_Click(object sender, RoutedEventArgs e)
+        private void btnProfile_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            MainWindowFrame.Navigate(new MainWindowLoginPage());
+        }
+
+        private void BtnContacts_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindowFrame.Navigate(new Contacts());
         }
     }
 }
