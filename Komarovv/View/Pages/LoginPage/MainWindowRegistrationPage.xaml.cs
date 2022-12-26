@@ -33,23 +33,22 @@ namespace Komarovv.View.Pages.LoginPage
 
         private async void BtnRegistration_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(TbFullName.Text) || string.IsNullOrEmpty(TbPhone.Text) || string.IsNullOrEmpty(TbEmail.Text) || string.IsNullOrEmpty(TbSkills.Text))
+            if (string.IsNullOrEmpty(TbFullName.Text) || string.IsNullOrEmpty(TbPhone.Text) ||  string.IsNullOrEmpty(TbPassword.Text))
             {
                 MessageBox.Show("Все поля должны быть заполнены!", "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Error);
 
             }
             else
+            if (FrameNavigate.DB.Users.Count(u => u.UserFIO == TbFullName.Text) > 0)
             {
-                if (FrameNavigate.DB.Users.Count(u => u.FIO == TbFullName.Text) > 0)
-                {
-                    MessageBox.Show("Пользователь с такими инициалами уже зарегистрирован!", "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                MessageBox.Show("Пользователь с такими инициалами уже зарегистрирован!", "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            {
                 FrameNavigate.DB.Users.Add(new Model.User
                 {
-                    FIO = TbFullName.Text,
+                    UserFIO = TbFullName.Text,
                     UserPhone = TbPhone.Text,
-                    UserMail = TbEmail.Text,
-                    UserSkills = TbSkills.Text,
+                    UserPassword = TbPassword.Text,
                     RoleID = 2
                 });
 

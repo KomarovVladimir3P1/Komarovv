@@ -16,29 +16,40 @@
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
     mc:Ignorable="d">
-    <Grid>
+    <Grid Cursor="">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition />
         </Grid.RowDefinitions>
         <Image
+            Source="/Images/2222.jpeg"
             Grid.RowSpan="2"
-            Source="/Images/main-bg.jpeg"
-            Stretch="UniformToFill" />
-        <StackPanel Background="#FFC8773C" />
+            Stretch="Fill" />
+        <StackPanel Background="#5865F2" />
+        <Button
+                            x:Name="BtnContacts"
+                            Padding="0"
+                            HorizontalAlignment="Left"
+                            Margin="10,0,0,0"
+                            VerticalAlignment="Center"
+                            Click="BtnContacts_Click"
+                            Content="Контакты"
+                            FontSize="23"
+                            FontWeight="SemiBold"
+                            Foreground="White"
+                            Style="{StaticResource MaterialDesignFlatButton}" />
         <TextBlock
-            Margin="10,0,0,0"
-            HorizontalAlignment="Left"
+            Margin="0,3,0,0"
+            HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            FontSize="20"
+            FontSize="24"
             FontWeight="SemiBold">
-            <Run Foreground="White">Курсовая работа | Фриланс биржа |</Run>
+            <Run Foreground="White">Прокат автомобилей "Ума"</Run>
             <Run
                 Cursor="Hand"
                 Foreground="#FFFCE7C8"
                 TextDecorations="Underline"
                 ToolTip="Курсовая работа по ТРПО">
-                Работа всем!
             </Run>
         </TextBlock>
         <StackPanel
@@ -46,16 +57,17 @@
             HorizontalAlignment="Right"
             VerticalAlignment="Center">
             <Button
-                x:Name="btnClose"
-                Click="btnClose_Click"
+                x:Name="btnprofile"
+                Click="btnProfile_Click"
                 Style="{StaticResource MaterialDesignIconForegroundButton}"
                 ToolTip="Закрыть приложение">
-                <materialDesign:PackIcon Foreground="#FFFEFEFE" Kind="Power" />
+                <materialDesign:PackIcon Foreground="#FFFEFEFE" Kind="Account" Height="48" Width="59" HorizontalAlignment="Center" VerticalAlignment="Center" />
             </Button>
+
         </StackPanel>
         <Frame
             x:Name="MainWindowFrame"
             Grid.Row="1"
-            NavigationUIVisibility="Hidden" Navigated="MainWindowFrame_Navigated" />
+            NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

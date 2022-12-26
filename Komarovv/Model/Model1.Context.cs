@@ -13,10 +13,10 @@ namespace Komarovv.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BaseDEntities1 : DbContext
+    public partial class DaEntities8 : DbContext
     {
-        public BaseDEntities1()
-            : base("name=BaseDEntities1")
+        public DaEntities8()
+            : base("name=DaEntities8")
         {
         }
     
@@ -25,8 +25,8 @@ namespace Komarovv.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Employer> Employers { get; set; }
-        public virtual DbSet<OrderBoard> OrderBoards { get; set; }
+        public virtual DbSet<Car> Cars { get; set; }
+        public virtual DbSet<Request> Requests { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }

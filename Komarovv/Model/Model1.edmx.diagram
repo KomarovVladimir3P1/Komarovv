@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b6ea2b00388b4e669d6166906d567b3f" Name="Diagram1">
-        <EntityTypeShape EntityType="BaseDModel.Employer" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseDModel.OrderBoard" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseDModel.Role" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseDModel.User" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
-        <AssociationConnector Association="BaseDModel.FK_OrderBoard_Employer" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseDModel.FK_OrderBoard_Role" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseDModel.FK_OrderBoard_User" ManuallyRouted="false" />
+      <Diagram DiagramId="7862a00c8eaa4e94b7e7999296981d07" Name="Diagram1">
+        <EntityTypeShape EntityType="DaModel.Car" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaModel.Request" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaModel.Role" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DaModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="DaModel.FK_Request_Car" ManuallyRouted="false" />
+        <AssociationConnector Association="DaModel.FK_Request_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DaModel.FK_User_Role" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

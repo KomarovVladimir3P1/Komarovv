@@ -13,11 +13,11 @@
 
     <Grid>
         <Border
-            Width="600"
-            Height="400"
+            Width="400"
+            Height="350"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Background="#4D3825"
+            Background="#36393E"
             CornerRadius="25"
             Effect="{StaticResource MaterialDesignElevationShadow16}">
             <Grid>
@@ -31,11 +31,11 @@
                     VerticalAlignment="Top">
                     <TextBlock
                         Width="420"
-                        Margin="0,40,0,0"
-                        FontSize="20"
+                        Margin="0,60,0,0"
+                        FontSize="30"
                         FontWeight="SemiBold"
                         Foreground="White"
-                        Text="Просто занимайся тем, что любишь, и, что бы ни было, сумеешь это продать"
+                        Text="Регистрация"
                         TextAlignment="Center"
                         TextWrapping="Wrap" />
                 </StackPanel>
@@ -49,7 +49,7 @@
                         Orientation="Horizontal">
                         <materialDesign:PackIcon
                             Margin="0,7,5,0"
-                            Foreground="#D4A84F"
+                            Foreground="White"
                             Kind="User" />
                         <TextBox
                             x:Name="TbFullName"
@@ -57,7 +57,7 @@
                             materialDesign:HintAssist.Hint="Введите ФИО"
                             materialDesign:TextFieldAssist.HasClearButton="True"
                             FontSize="15"
-                            Foreground="#D4A84F" />
+                            Foreground="LightGray" />
                     </StackPanel>
                     <StackPanel
                         Margin="0,5,0,0"
@@ -66,7 +66,7 @@
                         Orientation="Horizontal">
                         <materialDesign:PackIcon
                             Margin="0,5,5,0"
-                            Foreground="#D4A84F"
+                            Foreground="White"
                             Kind="Phone" />
                         <TextBox
                             x:Name="TbPhone"
@@ -74,8 +74,9 @@
                             materialDesign:HintAssist.Hint="Введите моб.номер"
                             materialDesign:TextFieldAssist.HasClearButton="True"
                             FontSize="15"
-                            Foreground="#D4A84F" />
+                            Foreground="LightGray" />
                     </StackPanel>
+                   
                     <StackPanel
                         Margin="0,5,0,0"
                         HorizontalAlignment="Center"
@@ -83,32 +84,15 @@
                         Orientation="Horizontal">
                         <materialDesign:PackIcon
                             Margin="0,5,5,0"
-                            Foreground="#D4A84F"
+                            Foreground="White"
                             Kind="Email" />
                         <TextBox
-                            x:Name="TbEmail"
+                            x:Name="TbPassword"
                             Width="170"
-                            materialDesign:HintAssist.Hint="Введите e-mail"
+                            materialDesign:HintAssist.Hint="Введите пароль"
                             materialDesign:TextFieldAssist.HasClearButton="True"
                             FontSize="15"
-                            Foreground="#D4A84F" />
-                    </StackPanel>
-                    <StackPanel
-                        Margin="0,5,0,0"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Orientation="Horizontal">
-                        <materialDesign:PackIcon
-                            Margin="0,5,5,0"
-                            Foreground="#D4A84F"
-                            Kind="Email" />
-                        <TextBox
-                            x:Name="TbSkills"
-                            Width="170"
-                            materialDesign:HintAssist.Hint="Мои навыки"
-                            materialDesign:TextFieldAssist.HasClearButton="True"
-                            FontSize="15"
-                            Foreground="#D4A84F" />
+                            Foreground="LightGray" />
                     </StackPanel>
                     <StackPanel
                         Grid.Row="1"
@@ -118,10 +102,7 @@
                         Orientation="Horizontal">
                         <Button
                             x:Name="BtnRegistration"
-                            materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                            materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
-                            materialDesign:ButtonProgressAssist.Value="-1"
-                            Background="#D4A84F"
+                            Background="#5865F2"
                             BorderThickness="0"
                             Click="BtnRegistration_Click"
                             Foreground="White"
@@ -130,31 +111,11 @@
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 Orientation="Horizontal">
-                                <materialDesign:PackIcon Margin="0,2,5,0" Kind="Bitcoin" />
-                                <TextBlock FontWeight="SemiBold" Text="Начать работать!" />
+                                <materialDesign:PackIcon Margin="0,2,5,0" Kind="Register" />
+                                <TextBlock FontWeight="SemiBold" Text="Зарегистрироваться" />
                             </StackPanel>
                         </Button>
-                        <Button
-                            x:Name="BtnBack"
-                            Margin="10,0,0,0"
-                            materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                            materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
-                            materialDesign:ButtonProgressAssist.Value="-1"
-                            Background="#D4A84F"
-                            BorderThickness="0"
-                            Click="BtnBack_Click"
-                            Cursor="Hand"
-                            Foreground="White"
-                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                            Style="{StaticResource MaterialDesignRaisedButton}">
-                            <StackPanel
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Orientation="Horizontal">
-                                <materialDesign:PackIcon Margin="0,2,5,0" Kind="Logout" />
-                                <TextBlock FontWeight="SemiBold" Text="Я передумал" />
-                            </StackPanel>
-                        </Button>
+                        
                     </StackPanel>
                 </StackPanel>
             </Grid>

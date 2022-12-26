@@ -3,6 +3,7 @@ using Komarovv.View.Pages.LoginPage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,7 +27,7 @@ namespace Komarovv.View.Pages.UserPage
         {
             InitializeComponent();
 
-            DataOrderInfo.ItemsSource = FrameNavigate.DB.OrderBoards.OrderBy(f => f.OrderTitle).ToList();
+          
         }
 
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -40,6 +41,69 @@ namespace Komarovv.View.Pages.UserPage
                             "Системное сообщение",
                             MessageBoxButton.OK,
                             MessageBoxImage.Information);
+        }
+        private async void BtnZakaz_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                FrameNavigate.DB.Requests.Add(new Model.Request
+                {
+                    UserID = Core.Authorization.AuthorizedUser.UserID,
+                    Hours = TbZakaz.Text,
+                    CarID = 1
+                    
+                });
+
+                await FrameNavigate.DB.SaveChangesAsync();
+
+                MessageBox.Show("Запрос об аренде отправлен на рассмотрение", "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Произошла ошибка: " + ex.ToString(), "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        private async void BtnZakaz1_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                FrameNavigate.DB.Requests.Add(new Model.Request
+                {
+                    UserID = Core.Authorization.AuthorizedUser.UserID,
+                    Hours = TbZakaz1.Text,
+                    CarID = 2
+                });
+
+                await FrameNavigate.DB.SaveChangesAsync();
+
+                MessageBox.Show("Запрос об аренде отправлен на рассмотрение", "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Произошла ошибка: " + ex.ToString(), "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
+        private async void BtnZakaz2_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                FrameNavigate.DB.Requests.Add(new Model.Request
+                {
+
+                    UserID = Core.Authorization.AuthorizedUser.UserID,
+                    Hours = TbZakaz2.Text,
+                    CarID = 3
+                });
+
+                await FrameNavigate.DB.SaveChangesAsync();
+
+                MessageBox.Show("Запрос об аренде отправлен на рассмотрение", "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Произошла ошибка: " + ex.ToString(), "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

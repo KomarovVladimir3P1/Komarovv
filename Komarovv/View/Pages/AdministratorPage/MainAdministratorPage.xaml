@@ -17,73 +17,119 @@
             Height="480"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Background="#4D3825"
+            Background="#36393E"
             Effect="{StaticResource MaterialDesignElevationShadow16}">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50" />
+                    <RowDefinition Height="75" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <Menu
-                    Grid.Row="0"
-                    Background="#4D3825"
-                    Foreground="LightGray"
-                    IsMainMenu="True"
-                    Style="{DynamicResource MaterialDesignMenu}">
-                    <Menu.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <DockPanel HorizontalAlignment="Stretch" />
-                        </ItemsPanelTemplate>
-                    </Menu.ItemsPanel>
-                    <MenuItem
-                        x:Name="MenuItemUser"
-                        HorizontalAlignment="Center"
-                        Click="MenuItemUser_Click"
-                        Cursor="Hand"
-                        Effect="{StaticResource MaterialDesignElevationShadow16}"
-                        Header="Информация о пользователях">
-                        <MenuItem.Icon>
-                            <materialDesign:PackIcon
-                                Width="20"
-                                Height="20"
-                                Foreground="LightGray"
-                                Kind="People" />
-                        </MenuItem.Icon>
-                    </MenuItem>
+                <Grid Grid.Row="0">
+                    <StackPanel>
+                    <TextBlock
+                        Margin="0 10 0 0"
+                        TextAlignment="Center"
+                               FontWeight="SemiBold"
+                               Foreground="White"
+                               FontSize="50"
+                        Text="Запросы"/>
+                </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <StackPanel
+            Margin="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+                        <DataGrid
+                x:Name="DataRequestInfo"
+                Width="980"
+                Height="400"
+                AlternatingRowBackground="#36393E"
+                AutoGenerateColumns="False"
+                Background="#36393E"
+                CanUserAddRows="False"
+                CanUserDeleteRows="False"
+                CanUserResizeColumns="False"
+                CanUserResizeRows="False"
+                CanUserSortColumns="False"
+                ColumnHeaderHeight="50"
+                Effect="{StaticResource MaterialDesignElevationShadow16}"
+                FontSize="15"
+                GridLinesVisibility="Horizontal"
+                IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="auto"
+                        Binding="{Binding User.UserFIO}"
+                        FontSize="20">
+                                    <DataGridTextColumn.Header>
+                                        <TextBlock FontSize="20" TextAlignment="Center" Foreground="White">ФИО</TextBlock>
+                                    </DataGridTextColumn.Header>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Width="Auto"
+                        Binding="{Binding User.UserPhone}"
+                        FontSize="20">
+                                    <DataGridTextColumn.Header>
+                                        <TextBlock FontSize="20" Foreground="White">ТЕЛЕФОН</TextBlock>
+                                    </DataGridTextColumn.Header>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Width="Auto"
+                        Binding="{Binding Request.CarID}"
+                        FontSize="20">
+                                    <DataGridTextColumn.Header >
+                                        <TextBlock FontSize="20" Foreground="White">Автомобиль</TextBlock>
+                                    </DataGridTextColumn.Header>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Width="Auto"
+                        Binding="{Binding Request.Hours}"
+                        FontSize="20">
+                                    <DataGridTextColumn.Header>
+                                        <TextBlock FontSize="20" Foreground="White">Кол-во суток</TextBlock>
+                                    </DataGridTextColumn.Header>
+                                </DataGridTextColumn>
 
-                    <MenuItem
-                        x:Name="MenuItemEmployer"
-                        HorizontalAlignment="Center"
-                        Click="MenuItemEmployer_Click"
-                        Cursor="Hand"
-                        Effect="{StaticResource MaterialDesignElevationShadow16}"
-                        Header="Информация о работодателях">
-                        <MenuItem.Icon>
-                            <materialDesign:PackIcon
-                                Width="20"
-                                Height="20"
-                                Foreground="LightGray"
-                                Kind="PeopleGroup" />
-                        </MenuItem.Icon>
-                    </MenuItem>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button
+                                    x:Name="BtnСonfirm"
+                                    Background="Green"
+                                    BorderBrush="white"
+                                    Click="BtnConfirm_Click"
+                                    Foreground="Black"
+                                    Style="{StaticResource MaterialDesignFlatLightButton}"
+                                    ToolTip="Подтвердить запрос">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <materialDesign:PackIcon Kind="Check" />
+                                                </StackPanel>
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
 
-                    <MenuItem
-                        x:Name="MenuItemOrders"
-                        HorizontalAlignment="Center"
-                        Click="MenuItemOrders_Click"
-                        Cursor="Hand"
-                        Effect="{StaticResource MaterialDesignElevationShadow16}"
-                        Header="Информация о заказах">
-                        <MenuItem.Icon>
-                            <materialDesign:PackIcon
-                                Width="20"
-                                Height="20"
-                                Foreground="LightGray"
-                                Kind="OrderBoolAscending" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </Menu>
-                <Grid x:Name="GridContentLoad" Grid.Row="1" />
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button
+                                    x:Name="BtnDelete"
+                                    Background="Red"
+                                    BorderBrush="White"
+                                    Click="BtnDelete_Click"
+                                    Foreground="Black"
+                                    Style="{StaticResource MaterialDesignFlatLightButton}"
+                                    ToolTip="Отменить запрос">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <materialDesign:PackIcon Kind="Close" />
+                                                </StackPanel>
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </Grid>
+
+
             </Grid>
         </Border>
     </Grid>

@@ -11,6 +11,6 @@ namespace Komarovv.Core
     public class FrameNavigate
     {
         public static Frame FrameObject { get; set; }
-        public static BaseDEntities1 DB { get; set; }
+        public static DaEntities8 DB { get; set; }
     }
 }
