@@ -56,6 +56,6 @@
         <Frame
             x:Name="MainWindowFrame"
             Grid.Row="1"
-            NavigationUIVisibility="Hidden" />
+            NavigationUIVisibility="Hidden" Navigated="MainWindowFrame_Navigated" />
     </Grid>
 </Window>
